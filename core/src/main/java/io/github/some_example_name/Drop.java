@@ -16,7 +16,6 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
         public BitmapFont font2;
         public FitViewport viewport;
 
-
         public void create() {
             batch = new SpriteBatch();
             // use libGDX's default font
