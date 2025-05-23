@@ -2,11 +2,12 @@ package io.github.some_example_name;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.utils.ScreenUtils;
 
 public class MainMenu implements Screen {
     final Drop game;
-
+    Texture menubg;
     public MainMenu(final Drop game) {
         this.game = game;
     }
@@ -22,8 +23,7 @@ public class MainMenu implements Screen {
         game.batch.setProjectionMatrix(game.viewport.getCamera().combined);
 
         game.batch.begin();
-        //draw text. Remember that x and y are in meters
-        game.font.draw(game.batch, "Boothill High Dating Simulator", 1, 1.5f);
+        game.font.draw(game.batch, "Boothill High Dating Simulator", 100, 200f);
         game.font.draw(game.batch, "Start!", 1, 1);
         game.batch.end();
 
