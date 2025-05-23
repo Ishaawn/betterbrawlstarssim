@@ -2,17 +2,23 @@ package io.github.some_example_name;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.utils.ScreenUtils;
 
 public class MainMenu implements Screen {
     final Drop game;
     Texture menubg;
+    private Music music;
     public MainMenu(final Drop game) {
         this.game = game;
     }
     @Override
     public void show() {
+        music = Gdx.audio.newMusic(Gdx.files.internal("brawlMusic.mp3"));
+        music.setLooping(true);
+        music.setVolume(0.5f);
+        music.play();
     }
 
     @Override

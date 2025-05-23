@@ -19,9 +19,9 @@ public class GameScreen implements Screen {
     Texture shelSprite;
     Sprite textbox;
     Texture boxtext;
-
     float worldWidth;
     float worldHeight;
+    int scene = 0;
     TextureRegion redTextBox;
     FreeTypeFontGenerator.FreeTypeFontParameter parameter;
     FreeTypeFontGenerator generator;
@@ -94,6 +94,9 @@ public class GameScreen implements Screen {
     }
     public void input(){
         //For changign textboxes <3
+        if(Gdx.input.isButtonJustPressed(2)){
+
+        }
     }
     public void draw(){
         ScreenUtils.clear(0f,0f,0f,1f);
@@ -101,11 +104,25 @@ public class GameScreen implements Screen {
         game.batch.draw(backgroundTexture, 0, 0, worldWidth, worldHeight);
         shelly.draw(game.batch);
         textbox.draw(game.batch);
-        font.draw(game.batch, "I-it's not like I like you or anything!!", textbox.getX()*4f, textbox.getY()*5f);
-        //reminder to self: text space (line up down) is 1! 5f -> 4f
-        font.draw(game.batch, "Dummy...", textbox.getX()*4f, textbox.getY()*4f);
+        texts(scene);
         System.out.println(textbox.getY());
         game.batch.end();
+    }
+    public void texts(int scene){
+        if (this.scene == 0){
+            font.draw(game.batch, "Heya! welcome to Boothill High", textbox.getX()*4f, textbox.getY()*5f);
+            font.draw(game.batch, "I'll show you the ropes to this high school...", textbox.getX()*4f, textbox.getY()*4f);
+        }
+        if (this.scene == 1){
+            backgroundTexture = new Texture("homeroom.jpg");
+            font.draw(game.batch, "Here is your homeroom, D-19, with Mr Colt", textbox.getX()*4f, textbox.getY()*5f);
+            font.draw(game.batch, "", textbox.getX()*4f, textbox.getY()*4f);
+        }
+        if (this.scene == 3){
+            backgroundTexture = new Texture("homeroom.jpg");
+            font.draw(game.batch, "I-it's not like I like you or anythin'...", textbox.getX()*4f, textbox.getY()*5f);
+            font.draw(game.batch, "You dummy...", textbox.getX()*4f, textbox.getY()*4f);
+        }
     }
 }
 
