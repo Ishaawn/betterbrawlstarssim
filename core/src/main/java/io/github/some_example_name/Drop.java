@@ -14,7 +14,7 @@ public class Drop extends Game{
     public FitViewport viewport;
     public void create(){
         Graphics.DisplayMode displayMode = Gdx.graphics.getDisplayMode();
-        Gdx.graphics.setFullscreenMode(displayMode);
+        //Gdx.graphics.setFullscreenMode(displayMode);
         batch = new SpriteBatch();
         font = new BitmapFont();
         viewport = new FitViewport((640),(360));

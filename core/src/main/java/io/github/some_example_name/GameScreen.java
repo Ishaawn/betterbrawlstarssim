@@ -1,5 +1,6 @@
 package io.github.some_example_name;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -7,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
+import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.ScreenUtils;
 
 ;
@@ -26,6 +28,8 @@ public class GameScreen implements Screen {
     FreeTypeFontGenerator.FreeTypeFontParameter parameter;
     FreeTypeFontGenerator generator;
     BitmapFont font;
+    Sprite buttons;
+    Texture buttonTexture;
     public GameScreen (final Drop game, String gameBG){
         this.game = game;
         this.background = gameBG;
@@ -40,7 +44,8 @@ public class GameScreen implements Screen {
         redTextBox = new TextureRegion(boxtext, boxtext.getWidth(), (int) (boxtext.getHeight()*0.48f));
         textbox = new Sprite(redTextBox);
 
-
+        buttonTexture = new Texture("button.png");
+        buttons = new Sprite(buttonTexture);
     }
     @Override
     public void show() {
@@ -53,6 +58,9 @@ public class GameScreen implements Screen {
 
         shelly.setSize(worldWidth*0.35f,worldWidth*0.55f);
         shelly.setPosition(worldWidth*0.64f - shelly.getWidth()*0.5f, worldHeight*0.48f - shelly.getHeight()/2);
+
+        buttons.setPosition(worldWidth*0.07f,worldHeight*0.03f);
+        buttons.setSize(worldWidth*0.2f, worldHeight*0.1f);
 
         textbox.setSize(worldWidth*0.95f,worldHeight*0.8f);
         textbox.setPosition(worldWidth*0.5f - textbox.getWidth()*0.5f, worldHeight*0.06f);
@@ -94,9 +102,22 @@ public class GameScreen implements Screen {
     }
     public void input(){
         //For changign textboxes <3
-        if(Gdx.input.isButtonJustPressed(2)){
+        Gdx.input.setInputProcessor(new InputAdapter() {
+            @Override
+            public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+                Vector3 worldCoords = new Vector3(screenX, screenY, 0);
+                float x = worldCoords.x;
+                float y = worldCoords.y;
+                if (buttons.getBoundingRectangle().contains(x, y)) {
+                    System.out.println("Sprite clicked!");
+                    scene ++;
+                    return true;
+                }
 
-        }
+                return false;
+            }
+        });
+
     }
     public void draw(){
         ScreenUtils.clear(0f,0f,0f,1f);
@@ -106,6 +127,7 @@ public class GameScreen implements Screen {
         textbox.draw(game.batch);
         texts(scene);
         System.out.println(textbox.getY());
+        buttons.draw(game.batch);
         game.batch.end();
     }
     public void texts(int scene){
