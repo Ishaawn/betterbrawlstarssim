@@ -29,7 +29,7 @@ public class MainMenu implements Screen {
         game.batch.setProjectionMatrix(game.viewport.getCamera().combined);
 
         game.batch.begin();
-        game.font.draw(game.batch, "Boothill High Dating Simulator", 100, 200f);
+        game.font.draw(game.batch, "Boothill High Dating Simulator. click to start", 100, 200f);
         game.font.draw(game.batch, "Start!", 1, 1);
         game.batch.end();
 

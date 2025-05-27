@@ -9,7 +9,8 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.utils.ScreenUtils;
 
-;
+;import static com.badlogic.gdx.Input.Keys.X;
+import static com.badlogic.gdx.Input.Keys.Z;
 
 public class GameScreen implements Screen {
     final Drop game;
@@ -94,8 +95,18 @@ public class GameScreen implements Screen {
     }
     public void input(){
         //For changign textboxes <3
-        if(Gdx.input.isButtonJustPressed(2)){
+        if(Gdx.input.isKeyJustPressed(Z)){
 
+            if(scene == 2){
+                scene = 700;
+            }
+            else scene++;
+        }
+        if(Gdx.input.isKeyJustPressed(X)){
+            scene = 69;
+            if(scene == 702){
+                scene = 666;
+            }
         }
     }
     public void draw(){
@@ -112,16 +123,83 @@ public class GameScreen implements Screen {
         if (this.scene == 0){
             font.draw(game.batch, "Heya! welcome to Boothill High", textbox.getX()*4f, textbox.getY()*5f);
             font.draw(game.batch, "I'll show you the ropes to this high school...", textbox.getX()*4f, textbox.getY()*4f);
+            font.draw(game.batch, "Z to continue", textbox.getX()*4f, textbox.getY()*3f);
         }
         if (this.scene == 1){
             backgroundTexture = new Texture("homeroom.jpg");
             font.draw(game.batch, "Here is your homeroom, D-19, with Mr Colt", textbox.getX()*4f, textbox.getY()*5f);
             font.draw(game.batch, "", textbox.getX()*4f, textbox.getY()*4f);
         }
-        if (this.scene == 3){
+        if (this.scene == 2){
             backgroundTexture = new Texture("homeroom.jpg");
-            font.draw(game.batch, "I-it's not like I like you or anythin'...", textbox.getX()*4f, textbox.getY()*5f);
-            font.draw(game.batch, "You dummy...", textbox.getX()*4f, textbox.getY()*4f);
+            font.draw(game.batch, "hey do u like me", textbox.getX()*4f, textbox.getY()*5f);
+            font.draw(game.batch, "Z - yes, X - no", textbox.getX()*4f, textbox.getY()*4f);
+        }
+        if (this.scene == 700){
+            backgroundTexture = new Texture("homeroom.jpg");
+            shelSprite = new Texture("shelblush.png");
+            shelly = new Sprite(shelSprite);
+            shelly.setSize(worldWidth*0.35f,worldWidth*0.55f);
+            shelly.setPosition(worldWidth*0.64f - shelly.getWidth()*0.5f, worldHeight*0.48f - shelly.getHeight()/2);
+            font.draw(game.batch, "yes yes yes!!! i love u too", textbox.getX()*4f, textbox.getY()*5f);
+            font.draw(game.batch, "Z - yes, X - no", textbox.getX()*4f, textbox.getY()*4f);
+        }
+        if (this.scene == 69){
+            backgroundTexture = new Texture("homeroom.jpg");
+            font.draw(game.batch, "i hate u vro", textbox.getX()*4f, textbox.getY()*5f);
+            font.draw(game.batch, "Z - yes,", textbox.getX()*4f, textbox.getY()*4f);
+        }
+        if (this.scene == 70){
+            backgroundTexture = new Texture("homeroom.jpg");
+            font.draw(game.batch, "how could u do ts to me", textbox.getX()*4f, textbox.getY()*5f);
+            font.draw(game.batch, "Z - yes, ", textbox.getX()*4f, textbox.getY()*4f);
+        }
+        if (this.scene == 71){
+            backgroundTexture = new Texture("homeroom.jpg");
+            font.draw(game.batch, "i thought we had smth", textbox.getX()*4f, textbox.getY()*5f);
+            font.draw(game.batch, "Z - yes, ", textbox.getX()*4f, textbox.getY()*4f);
+        }
+        if (this.scene == 72){
+            backgroundTexture = new Texture("homeroom.jpg");
+            shelSprite = new Texture("img_2.png");
+            shelly = new Sprite(shelSprite);
+            shelly.setSize(worldWidth*0.35f,worldWidth*0.55f);
+            shelly.setPosition(worldWidth*0.64f - shelly.getWidth()*0.5f, worldHeight*0.48f - shelly.getHeight()/2);
+            font.draw(game.batch, "h-hey im collete", textbox.getX()*4f, textbox.getY()*5f);
+            font.draw(game.batch, "Z - hi!, ", textbox.getX()*4f, textbox.getY()*4f);
+        }
+        if (this.scene == 73){
+            backgroundTexture = new Texture("homeroom.jpg");
+            font.draw(game.batch, "you have such nice biceps", textbox.getX()*4f, textbox.getY()*5f);
+            font.draw(game.batch, "Z - i know, ", textbox.getX()*4f, textbox.getY()*4f);
+        }
+        if (this.scene == 701){
+            backgroundTexture = new Texture("homeroom.jpg");
+            font.draw(game.batch, "why dont we go on a date sweetie", textbox.getX()*4f, textbox.getY()*5f);
+            font.draw(game.batch, "Z - yes", textbox.getX()*4f, textbox.getY()*4f);
+        }
+        if (this.scene == 702){
+            shelSprite = new Texture("img.png");
+            shelly = new Sprite(shelSprite);
+            shelly.setSize(worldWidth*0.35f,worldWidth*0.55f);
+            shelly.setPosition(worldWidth*0.64f - shelly.getWidth()*0.5f, worldHeight*0.48f - shelly.getHeight()/2);
+            backgroundTexture = new Texture("park.png");
+            font.draw(game.batch, "I love being here with u", textbox.getX()*4f, textbox.getY()*5f);
+            font.draw(game.batch, "do you like my casualwear..?", textbox.getX()*4f, textbox.getY()*4f);
+            font.draw(game.batch, "Z - i love u, X - let's break up", textbox.getX()*4f, textbox.getY()*3f);
+        }
+        if (this.scene == 703){
+            backgroundTexture = new Texture("park.png");
+            font.draw(game.batch, "ily too", textbox.getX()*4f, textbox.getY()*5f);
+        }
+        if (this.scene == 704){
+            backgroundTexture = new Texture("park.png");
+            font.draw(game.batch, "The END (shelly ending)", textbox.getX()*4f, textbox.getY()*5f);
+        }
+        if (this.scene == 666){
+            backgroundTexture = new Texture("park.png");
+            font.draw(game.batch, ":(", textbox.getX()*4f, textbox.getY()*5f);
+            font.draw(game.batch, "", textbox.getX()*4f, textbox.getY()*4f);
         }
     }
 }
