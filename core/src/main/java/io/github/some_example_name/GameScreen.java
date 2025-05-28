@@ -168,11 +168,18 @@ public class GameScreen implements Screen {
             font.draw(game.batch, "h-hey im collete", textbox.getX()*4f, textbox.getY()*5f);
             font.draw(game.batch, "Z - hi!, ", textbox.getX()*4f, textbox.getY()*4f);
         }
+
         if (this.scene == 73){
             backgroundTexture = new Texture("homeroom.jpg");
             font.draw(game.batch, "you have such nice biceps", textbox.getX()*4f, textbox.getY()*5f);
             font.draw(game.batch, "Z - i know, ", textbox.getX()*4f, textbox.getY()*4f);
         }
+        if (this.scene == 74){
+            backgroundTexture = new Texture("homeroom.jpg");
+            font.draw(game.batch, "n-not that I like you or anything", textbox.getX()*4f, textbox.getY()*5f);
+            font.draw(game.batch, "Z - but ily!, X - ok", textbox.getX()*4f, textbox.getY()*4f);
+        }
+
         if (this.scene == 701){
             backgroundTexture = new Texture("homeroom.jpg");
             font.draw(game.batch, "why dont we go on a date sweetie", textbox.getX()*4f, textbox.getY()*5f);
