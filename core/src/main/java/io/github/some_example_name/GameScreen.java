@@ -95,7 +95,7 @@ public class GameScreen implements Screen {
     }
     public void input(){
         //For changign textboxes <3
-        if(Gdx.input.isKeyJustPressed(Z)){
+            if(Gdx.input.isKeyJustPressed(Z)){
 
             if(scene == 2){
                 scene = 700;
